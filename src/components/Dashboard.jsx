@@ -224,21 +224,55 @@ export default function Dashboard() {
     { title: "Syllabus", icon: "https://cdn-icons-png.flaticon.com/512/4708/4708448.png", click: '/syllabus' },
     { title: "Assessments", icon: "https://cdn-icons-png.flaticon.com/512/11265/11265088.png", click: '/assessments' },
   ];
-
   const adminMenu = [
-    { title: "Manage Teachers", icon: "https://cdn-icons-png.freepik.com/512/4722/4722426.png", click: "/admin/teachers" },
-    { title: "Manage Students", icon: "https://cdn-icons-png.flaticon.com/512/1048/1048953.png", click: "/admin/students" },
-    { title: "Class Reports", icon: "https://cdn-icons-png.freepik.com/512/4722/4722426.png", click: "/admin/reports" },
-    { title: "All Attendances", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyFkqK1OGu-QaRstMr8zio7bOEshNc6VSd1Q&s", click: "/admin/attendance" },
-    { title: "Announcement", icon: "https://cdn3.vectorstock.com/i/1000x1000/61/77/concept-of-email-notification-icon-vector-11226177.jpg", click: "/admin/announcement" },
-    { title: "Assign Subjects", icon: "https://cdn-icons-png.flaticon.com/512/1048/1048953.png", click: "/admin/assign-subjects" },
-    { title: "Fee Management", icon: "https://cdn-icons-png.freepik.com/512/4722/4722426.png", click: "/admin/fees" },
-    { title: "Manage Timetable", icon: "https://cdn-icons-png.flaticon.com/512/1048/1048953.png", click: "/admin/timetable" },
-    { title: "Hostel/Dorm", icon: "https://cdn-icons-png.flaticon.com/512/1048/1048953.png", click: "/admin/hostel" },
-    { title: "Payroll", icon: "https://cdn-icons-png.flaticon.com/512/1048/1048953.png", click: "/admin/Payroll" },
-    { title: "School Events", icon: "https://cdn-icons-png.flaticon.com/512/1048/1048953.png", click: "/admin/school-events" },
-    { title: "Bus Tracking", icon: "https://cdn-icons-png.flaticon.com/512/1048/1048953.png", click: "/bus-tracking" },
+    { title: "Manage Teachers", icon: "https://cdn-icons-png.flaticon.com/512/3135/3135768.png", click: "/admin/teachers" },
+    { title: "Manage Students", icon: "https://cdn-icons-png.flaticon.com/512/1077/1077063.png", click: "/admin/students" },
+    { title: "Class Reports", icon: "https://cdn-icons-png.flaticon.com/512/942/942748.png", click: "/admin/reports" },
+    { title: "All Attendances", icon: "https://cdn-icons-png.flaticon.com/512/2921/2921222.png", click: "/admin/attendance" },
+    { title: "Announcement", icon: "https://cdn-icons-png.flaticon.com/512/1057/1057246.png", click: "/admin/announcement" },
+    { title: "Assign Subjects", icon: "https://cdn-icons-png.flaticon.com/512/847/847969.png", click: "/admin/assign-subjects" },
+    { title: "Fee Management", icon: "https://cdn-icons-png.flaticon.com/512/3144/3144456.png", click: "/admin/fees" },
+    { title: "Manage Timetable", icon: "https://cdn-icons-png.flaticon.com/512/3595/3595455.png", click: "/admin/timetable" },
+    { title: "Hostel/Dorm", icon: "https://cdn-icons-png.flaticon.com/512/2731/2731225.png", click: "/admin/hostel" },
+    { title: "Payroll", icon: "https://cdn-icons-png.flaticon.com/512/2331/2331970.png", click: "/admin/Payroll" },
+    { title: "School Events", icon: "https://cdn-icons-png.flaticon.com/512/1973/1973801.png", click: "/admin/school-events" },
+    { title: "Bus Tracking", icon: "https://cdn-icons-png.flaticon.com/512/854/854878.png", click: "/bus-tracking" },
+    { title: "Library", icon: "https://cdn-icons-png.flaticon.com/512/2702/2702130.png", click: "/library" },
+    { title: "Exam Scheduler", icon: "https://cdn-icons-png.flaticon.com/512/3181/3181374.png", click: "/admin/exams" },
+    { title: "Leave Requests", icon: "https://cdn-icons-png.flaticon.com/512/2920/2920244.png", click: "/admin/leaves" },
+    { title: "Performance Reports", icon: "https://cdn-icons-png.flaticon.com/512/1907/1907550.png", click: "/admin/performance" },
+    { title: "Inventory Management", icon: "https://cdn-icons-png.flaticon.com/512/1170/1170627.png", click: "/admin/inventory" },
+    { title: "Maintenance Requests", icon: "https://cdn-icons-png.flaticon.com/512/2723/2723631.png", click: "/admin/maintenance" },
+    { title: "Disciplinary Records", icon: "https://cdn-icons-png.flaticon.com/512/3062/3062634.png", click: "/admin/discipline" },
+    { title: "Feedback & Suggestions", icon: "https://cdn-icons-png.flaticon.com/512/3143/3143684.png", click: "/admin/feedback" },
+    { title: "PTM Scheduler", icon: "https://cdn-icons-png.flaticon.com/512/3893/3893103.png", click: "/admin/ptm-scheduler" },
+    { title: "Scholarship Manager", icon: "https://cdn-icons-png.flaticon.com/512/1037/1037072.png", click: "/admin/scholarships" },
+    { title: "Custom Report Builder", icon: "https://cdn-icons-png.flaticon.com/512/159/159606.png", click: "/admin/custom-reports" },
+    { title: "Role & Permissions", icon: "https://cdn-icons-png.flaticon.com/512/3064/3064197.png", click: "/admin/roles" },
+    { title: "Activity Logs", icon: "https://cdn-icons-png.flaticon.com/512/1828/1828884.png", click: "/admin/logs" },
+    { title: "Online Admission", icon: "https://cdn-icons-png.flaticon.com/512/3594/3594419.png", click: "/admin/admissions" },
   ];
+
+  const studentMenu = [
+    { title: "My Profile", icon: "https://cdn-icons-png.flaticon.com/512/847/847969.png", click: "/student/profile" },
+    { title: "My Subjects", icon: "https://cdn-icons-png.flaticon.com/512/2991/2991148.png", click: "/student/subjects" },
+    { title: "Homework & Assignments", icon: "https://cdn-icons-png.flaticon.com/512/2921/2921222.png", click: "/student/homework" },
+    { title: "Ask Doubts", icon: "https://cdn-icons-png.flaticon.com/512/9073/9073142.png", click: "/student/doubts" },
+    { title: "My Classes", icon: "https://cdn-icons-png.flaticon.com/512/1995/1995521.png", click: "/student/classes" },
+    { title: "Quiz/Practice", icon: "https://cdn-icons-png.flaticon.com/512/3135/3135748.png", click: "/student/quizzes" },
+    { title: "Announcements", icon: "https://cdn-icons-png.flaticon.com/512/126/126472.png", click: "/student/announcements" },
+    { title: "Time Table", icon: "https://cdn-icons-png.flaticon.com/512/3418/3418511.png", click: "/student/timetable" },
+    { title: "Attendance Report", icon: "https://cdn-icons-png.flaticon.com/512/2721/2721169.png", click: "/student/attendance" },
+    { title: "Fees & Payments", icon: "https://cdn-icons-png.flaticon.com/512/5282/5282478.png", click: "/student/fees" },
+    { title: "Library Access", icon: "https://cdn-icons-png.flaticon.com/512/3145/3145765.png", click: "/student/library" },
+    { title: "School Events", icon: "https://cdn-icons-png.flaticon.com/512/942/942748.png", click: "/student/events" },
+    { title: "Hostel Info", icon: "https://cdn-icons-png.flaticon.com/512/1518/1518982.png", click: "/student/hostel" },
+    { title: "Transport Details", icon: "https://cdn-icons-png.flaticon.com/512/3081/3081648.png", click: "/student/transport" },
+    { title: "Contact Teachers", icon: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png", click: "/student/contact-teachers" },
+    { title: "Results", icon: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png", click: "/student/results" },
+  ];
+
+
 
 
   if (!user) return null;
@@ -251,7 +285,7 @@ export default function Dashboard() {
           <WelcomeSection >
             <WelcomeImage src="/teacher.png" alt="Welcome illustration" />
             <div>
-              <p  style={{ margin: 0, fontSize: "1rem", color: "#333" }}>Welcome back</p>
+              <p style={{ margin: 0, fontSize: "1rem", color: "#333" }}>Welcome back</p>
               <h2 style={{ margin: "0.2rem 0", color: "#1976d2" }}>{user.username}!</h2>
               <p style={{ maxWidth: "600px", color: "#333" }}>
                 We would like to take this opportunity to welcome you to our practice and to thank you for choosing our platform. We look forward to providing you with personalized, comprehensive tools focused on education, wellness and collaboration.
@@ -345,15 +379,19 @@ export default function Dashboard() {
 
         {role === "student" && (
           <>
-            <Section>
-              <h3>My Dashboard</h3>
-              <StudentDashboard user={user} />
-            </Section>
-
-            <Section>
-              <h3>Library</h3>
-              <LibraryManagement user={user} />
-            </Section>
+            <GridContainer>
+              {studentMenu.map((item, idx) => (
+                <Tile
+                  onClick={() => navigate(item.click)}
+                  key={idx}
+                >
+                  <img
+                    src={item.icon}
+                    alt={item.title} />
+                  <p>{item.title}</p>
+                </Tile>
+              ))}
+            </GridContainer>
           </>
         )}
 
