@@ -28,17 +28,17 @@ import AttendanceModule from "./components/teacher/AttendenceTeacher";
 import PostCreate from "./components/PostCreate";
 import PostList from "./components/PostList";
 
-import ManageTeachers from "./components/admin/(temp)/ManageTeachers";
-import ManageStudents from "./components/admin/(temp)/ManageStudents";
-import ClassReports from "./components/admin/(temp)/ClassReports";
-import Attendances from "./components/admin/(temp)/Attendances";
-import AssignSubjects from "./components/admin/(temp)/AssignSubjects";
+import ManageStaffs from "./components/admin/(temp)/ManageStaffs.jsx";
+import ManageStudents from "./components/admin/(temp)/ManageStudents.jsx";
+import ClassReports from "./components/admin/(temp)/ClassReports.jsx";
+import Attendances from "./components/admin/(temp)/Attendances.jsx";
+import AssignSubjects from "./components/admin/(temp)/AssignSubjects.jsx";
 
-import FeeManagement from "./components/admin/FeeManagement";
-import HostelManagement from "./components/admin/HostelManagement";
-import EventCalendar from "./components/admin/EventCalender";
-import PayrollManagement from "./components/admin/PayrollManagement";
-import Announcements from "./components/admin/Announcements";
+import FeeManagement from "./components/admin/FeeManagement.jsx";
+import HostelManagement from "./components/admin/HostelManagement.jsx";
+import EventCalendar from "./components/admin/EventCalender.jsx";
+import PayrollManagement from "./components/admin/PayrollManagement.jsx";
+import Announcements from "./components/admin/Announcements.jsx";
 
 // Styled Components
 const AppContainer = styled.div`
@@ -262,8 +262,8 @@ function AppLayout() {
 
           //admin Routes
            <Route
-            path="/admin/teachers"
-            element={<ManageTeachers/>}
+            path="/admin/staffs"
+            element={<ManageStaffs/>}
           />
           <Route
             path="/admin/students"

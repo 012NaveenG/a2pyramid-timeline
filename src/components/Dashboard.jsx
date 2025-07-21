@@ -225,7 +225,7 @@ export default function Dashboard() {
     { title: "Assessments", icon: "https://cdn-icons-png.flaticon.com/512/11265/11265088.png", click: '/assessments' },
   ];
   const adminMenu = [
-    { title: "Manage Teachers", icon: "https://cdn-icons-png.flaticon.com/512/3135/3135768.png", click: "/admin/teachers" },
+    { title: "Manage Staffs", icon: "https://cdn-icons-png.flaticon.com/512/3135/3135768.png", click: "/admin/staffs" },
     { title: "Manage Students", icon: "https://cdn-icons-png.flaticon.com/512/1077/1077063.png", click: "/admin/students" },
     { title: "Class Reports", icon: "https://cdn-icons-png.flaticon.com/512/942/942748.png", click: "/admin/reports" },
     { title: "All Attendances", icon: "https://cdn-icons-png.flaticon.com/512/2921/2921222.png", click: "/admin/attendance" },
