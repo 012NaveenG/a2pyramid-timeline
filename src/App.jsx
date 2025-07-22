@@ -31,7 +31,7 @@ import PostList from "./components/PostList";
 import ManageStaffs from "./components/admin/(temp)/ManageStaffs.jsx";
 import ManageStudents from "./components/admin/(temp)/ManageStudents.jsx";
 import ClassReports from "./components/admin/(temp)/ClassReports.jsx";
-import Attendances from "./components/admin/(temp)/Attendances.jsx";
+import ManageAttendances from "./components/admin/(temp)/ManageAttendances.jsx";
 import AssignSubjects from "./components/admin/(temp)/AssignSubjects.jsx";
 
 import FeeManagement from "./components/admin/FeeManagement.jsx";
@@ -275,7 +275,7 @@ function AppLayout() {
           />
           <Route
             path="/admin/attendance"
-            element={<Attendances />}
+            element={<ManageAttendances />}
           />
           <Route
             path="/admin/announcement"

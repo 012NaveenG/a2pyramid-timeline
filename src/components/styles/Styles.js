@@ -93,7 +93,7 @@ const GridContainer = styled.div`
   }
 
   @media (max-width: 480px) {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 `;
 
@@ -114,7 +114,7 @@ const Card = styled.div`
   }
 
   @media (max-width: 640px) {
-    width: 90%;
+    // width: 90%;
   }
 `;
 
@@ -291,6 +291,27 @@ const Td = styled.div`
 `;
 
 
+const TabWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+`;
+
+const TabButton = styled.button`
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background-color: ${({ active }) => (active ? "#007bff" : "#e0e0e0")};
+  color: ${({ active }) => (active ? "white" : "black")};
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    background-color: ${({ active }) => (active ? "#0056b3" : "#c2c2c2")};
+  }
+`;
+
 
 export {
   Container,
@@ -313,4 +334,6 @@ export {
   Tr,
   Th,
   Td,
+  TabWrapper,
+  TabButton
 };
