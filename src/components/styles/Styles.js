@@ -218,6 +218,79 @@ const InfoSection = styled.div`
   }
 `;
 
+const SelectWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  width: 100%;
+  max-width: 250px;
+`;
+
+const Select = styled.select`
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+
+  &:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+  }
+`;
+
+const Table = styled.div`
+  width: 100%;
+  height:60vh;
+  overflow-y:auto;
+  overflow-x: auto;
+  margin-top: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+`;
+
+const Thead = styled.div`
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  background-color: #f5f5f5;
+  font-weight: bold;
+  color: #333;
+`;
+
+const Tbody = styled.div`
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+`;
+
+const Tr = styled.div`
+  display: table-row;
+
+  &:nth-child(even) {
+    background-color: #fafafa;
+  }
+`;
+
+const Th = styled.div`
+  display: table-cell;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  white-space: nowrap;
+`;
+
+const Td = styled.div`
+  display: table-cell;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+
 
 export {
   Container,
@@ -231,5 +304,13 @@ export {
   ModalWrapper,
   Header,
   CloseBtn,
-  InfoSection
+  InfoSection,
+  SelectWrapper,
+  Select,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
 };
