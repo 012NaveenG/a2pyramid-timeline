@@ -39,6 +39,7 @@ import HostelManagement from "./components/admin/HostelManagement.jsx";
 import EventCalendar from "./components/admin/EventCalender.jsx";
 import PayrollManagement from "./components/admin/PayrollManagement.jsx";
 import Announcements from "./components/admin/Announcements.jsx";
+import ManageTimeTable from "./components/admin/(temp)/ManageTimeTable.jsx";
 
 // Styled Components
 const AppContainer = styled.div`
@@ -285,13 +286,10 @@ function AppLayout() {
             path="/admin/assign-subjects"
             element={<AssignSubjects />}
           />
-          <Route
-            path="/admin/fees"
-            element={<FeeManagement />}
-          />
+         
           <Route
             path="/admin/timetable"
-            element={<AdminTimeTable />}
+            element={<ManageTimeTable />}
           />
           <Route
             path="/admin/hostel"
@@ -301,10 +299,7 @@ function AppLayout() {
             path="/admin/Payroll"
             element={<PayrollManagement />}
           />
-          <Route
-            path="/admin/school-events"
-            element={<EventCalendar />}
-          />
+          
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

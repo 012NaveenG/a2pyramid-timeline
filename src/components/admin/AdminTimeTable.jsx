@@ -146,8 +146,6 @@ export default function AdminTimetable() {
   return (
     <Container>
 
-      
-
       <Heading>School Weekly Timetable</Heading>
 
     <Section>

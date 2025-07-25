@@ -119,8 +119,8 @@ const Card = styled.div`
 `;
 
 const Avatar = styled.img`
-  width: ${(props) => props.size || "50px"};
-  height: ${(props) => props.size || "50px"};
+  width: ${(props) => props.sizes || "50px"};
+  height: ${(props) => props.sizes || "50px"};
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #e2e2e2;
@@ -266,7 +266,6 @@ const Tbody = styled.div`
 
 const Tr = styled.div`
   display: table-row;
-
   &:nth-child(even) {
     background-color: #fafafa;
   }
@@ -283,6 +282,7 @@ const Th = styled.div`
 const Td = styled.div`
   display: table-cell;
   padding: 12px;
+   vertical-align: middle;
   text-align: left;
   border-bottom: 1px solid #f0f0f0;
   white-space: nowrap;
@@ -313,6 +313,30 @@ const TabButton = styled.button`
 `;
 
 
+const ChartContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding:15px 5px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+`;
+
+const ChartBox = styled.div`
+  background-color: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 300px; 
+
+`;
+
 export {
   Container,
   UtilityContainer,
@@ -335,5 +359,7 @@ export {
   Th,
   Td,
   TabWrapper,
-  TabButton
+  TabButton,
+  ChartContainer,
+  ChartBox
 };

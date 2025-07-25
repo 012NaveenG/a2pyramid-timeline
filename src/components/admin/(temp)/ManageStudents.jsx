@@ -1,47 +1,26 @@
 import styled from "styled-components";
 import {
-  Avatar, Card, CloseBtn, Container,
-  GridContainer, Header, InfoSection, Input,
+  Avatar, CloseBtn, Container,
+  Header, InfoSection, Input,
   ModalWrapper, Overlay, Select,
-  SelectWrapper, UtilityContainer
+  SelectWrapper, UtilityContainer,
+  Button, Table, Tbody, Td, Th, Thead, Tr
 } from "../../styles/Styles.js";
 
 import { useEffect, useState } from "react";
-import Pagination from "../../ui/Pagination.jsx";
 import useDebounce from "../../../utils/Debounce.jsx";
 import { allStudents } from "../../../assets/Students.js";
 
-const Name = styled.h2`
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #222;
-  margin-bottom: 0.4rem;
-`;
 
-const Subject = styled.p`
-  font-size: 0.95rem;
-  color: #666;
-  margin: 0;
-`;
 
 const ManageStudents = () => {
   const [students, setStudents] = useState(allStudents);
   const [input, setInput] = useState("");
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [selectedClass, setSelectedClass] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const itemsPerPage = 15;
+  const [selectedSection, setSelectedSection] = useState("")
   const debouncedInput = useDebounce(input, 300);
-  const totalPages = Math.ceil(students.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const visibleStudents = students.slice(startIndex, startIndex + itemsPerPage);
 
-  const handlePageChange = (page) => {
-    if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-    }
-  };
 
   const searchStudent = (e) => {
     setInput(e.target.value);
@@ -51,6 +30,9 @@ const ManageStudents = () => {
   const handleClassChange = (value) => {
     setSelectedClass(value);
   };
+  const handleSectionChange = (value) => {
+    setSelectedSection(value)
+  }
 
   useEffect(() => {
     let filtered = allStudents;
@@ -58,16 +40,19 @@ const ManageStudents = () => {
     if (debouncedInput.trim() !== "") {
       filtered = filtered.filter((st) =>
         st.name.toLowerCase().includes(debouncedInput.toLowerCase()) ||
-        (st.subject && st.subject.toLowerCase().includes(debouncedInput.toLowerCase()))
+        (st.guardianName && st.guardianName.toLowerCase().includes(debouncedInput.toLowerCase()))
       );
     }
 
     if (selectedClass !== "") {
       filtered = filtered.filter((st) => st.class?.toString() === selectedClass.toString());
     }
+    if (selectedSection !== "") {
+      filtered = filtered.filter((st) => st.section?.toString() === selectedSection.toString())
+    }
 
     setStudents(filtered);
-  }, [debouncedInput, selectedClass]);
+  }, [debouncedInput, selectedClass, selectedSection]);
 
   return (
     <Container>
@@ -78,12 +63,12 @@ const ManageStudents = () => {
       <UtilityContainer>
         <Input
           type="text"
-          placeholder="Search by name or subject"
+          placeholder="Search by name or guardian name"
           value={input}
           onChange={searchStudent}
         />
 
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
           <SelectWrapper>
             <Select
               id="class-select"
@@ -98,10 +83,24 @@ const ManageStudents = () => {
               ))}
             </Select>
           </SelectWrapper>
+          <SelectWrapper>
+            <Select
+              id="section-select"
+              value={selectedSection}
+              onChange={(e) => handleSectionChange(e.target.value)}
+            >
+              <option value="">All Sections</option>
+              {[...Array(5)].map((_, i) => (
+                <option key={i + 1} value={String.fromCharCode(64 + (i + 1))}>
+                  Sec {String.fromCharCode(64 + (i + 1))}
+                </option>
+              ))}
+            </Select>
+          </SelectWrapper>
         </div>
       </UtilityContainer>
 
-      <GridContainer>
+      {/* <GridContainer>
         {visibleStudents.map((st, idx) => (
           <Card key={idx} onClick={() => setSelectedStudent(st)}>
             <Avatar src={st.img} alt={st.name} />
@@ -115,7 +114,45 @@ const ManageStudents = () => {
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={handlePageChange}
-      />
+      /> */}
+
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Profile</Th>
+            <Th>RollNo</Th>
+            <Th>Name</Th>
+            <Th>Guradian Name</Th>
+            <Th>Class</Th>
+            <Th>Section</Th>
+            <Th>Phone</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {students.length > 0 ? (
+            students.map((st, index) => (
+              <Tr key={st.empId || index} onClick={() => setSelectedStudent(st)} style={{ cursor: "pointer" }}>
+                <Td>
+                  <Avatar sizes={'40px'} src={st.img} alt="profile_img" />
+                </Td>
+                <Td>{st.rollNumber}</Td>
+                <Td>{st.name}</Td>
+                <Td>{st.guardianName}</Td>
+                <Td>{st.class}</Td>
+                <Td>{st.section}</Td>
+                <Td>{st.phone}</Td>
+
+              </Tr>
+            ))
+          ) : (
+            <Tr>
+              <Td colSpan="6" style={{ textAlign: "center" }}>
+                No staff found
+              </Td>
+            </Tr>
+          )}
+        </Tbody>
+      </Table>
     </Container>
   );
 };
