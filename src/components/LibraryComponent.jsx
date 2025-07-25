@@ -59,7 +59,7 @@ const LibraryComponent = () => {
       <UtilityContainer>
         <Input
           type="text"
-          placeholder="Search by book title"
+          placeholder="Search by book title or author"
           value={input}
           onChange={searchBook}
         />

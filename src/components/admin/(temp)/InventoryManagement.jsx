@@ -66,46 +66,50 @@ const ActionButton = styled.button`
 `;
 
 const InventoryManagement = () => {
-  const [items, setItems] = useState(dummyInventorynventory);
+    const [items, setItems] = useState(dummyInventory);
 
-  const handleAction = (id, action) => {
-    const updatedItems = items.map((item) =>
-      item.id === id ? { ...item, status: action } : item
+    const handleAction = (id, action) => {
+        const updatedItems = items.map((item) =>
+            item.id === id ? { ...item, status: action } : item
+        );
+        setItems(updatedItems);
+    };
+
+    return (
+        <Container>
+            <Title>Inventory Management</Title>
+
+            <div style={{ height: "70vh", overflowY: "auto" }}>
+
+                {items.map((item) => (
+                    <ItemCard key={item.id}>
+                        <ItemInfo>
+                            <p><strong>Item Name:</strong> {item.name}</p>
+                            <p><strong>Item ID:</strong> {item.id}</p>
+                            <p><strong>Category:</strong> {item.category}</p>
+                            <p><strong>Quantity:</strong> {item.quantity}</p>
+                            <p><strong>Purchase Date:</strong> {item.purchaseDate}</p>
+                            <p>
+                                <strong>Status:</strong>{" "}
+                                <span className={`status ${item.status}`}>{item.status}</span>
+                            </p>
+                        </ItemInfo>
+
+                        {item.status === "Pending" && (
+                            <ButtonGroup>
+                                <ActionButton approve onClick={() => handleAction(item.id, "Approved")}>
+                                    Approve
+                                </ActionButton>
+                                <ActionButton onClick={() => handleAction(item.id, "Rejected")}>
+                                    Reject
+                                </ActionButton>
+                            </ButtonGroup>
+                        )}
+                    </ItemCard>
+                ))}
+            </div>
+        </Container>
     );
-    setItems(updatedItems);
-  };
-
-  return (
-    <Container>
-      <Title>Inventory Management</Title>
-      {items.map((item) => (
-        <ItemCard key={item.id}>
-          <ItemInfo>
-            <p><strong>Item Name:</strong> {item.name}</p>
-            <p><strong>Item ID:</strong> {item.id}</p>
-            <p><strong>Category:</strong> {item.category}</p>
-            <p><strong>Quantity:</strong> {item.quantity}</p>
-            <p><strong>Purchase Date:</strong> {item.purchaseDate}</p>
-            <p>
-              <strong>Status:</strong>{" "}
-              <span className={`status ${item.status}`}>{item.status}</span>
-            </p>
-          </ItemInfo>
-
-          {item.status === "Pending" && (
-            <ButtonGroup>
-              <ActionButton approve onClick={() => handleAction(item.id, "Approved")}>
-                Approve
-              </ActionButton>
-              <ActionButton onClick={() => handleAction(item.id, "Rejected")}>
-                Reject
-              </ActionButton>
-            </ButtonGroup>
-          )}
-        </ItemCard>
-      ))}
-    </Container>
-  );
 };
 
 export default InventoryManagement;

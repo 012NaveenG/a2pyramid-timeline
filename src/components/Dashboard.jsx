@@ -240,7 +240,7 @@ export default function Dashboard() {
     { title: "Disciplinary Records", icon: "https://cdn-icons-png.flaticon.com/512/3062/3062634.png", click: "/admin/discipline" },
     { title: "Feedback & Suggestions", icon: "https://cdn-icons-png.flaticon.com/512/3143/3143684.png", click: "/admin/feedback" },
     { title: "Scholarship Manager", icon: "https://cdn-icons-png.flaticon.com/512/1037/1037072.png", click: "/admin/scholarships" },
-    { title: "Online Admission", icon: "https://cdn-icons-png.flaticon.com/512/3594/3594419.png", click: "/admin/admissions" },
+    { title: "Online Admission", icon: "https://cdn-icons-png.flaticon.com/512/3594/3594419.png", click: "/admin/online-admissions" },
   ];
 
   const studentMenu = [

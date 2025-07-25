@@ -42,6 +42,10 @@ import Announcements from "./components/admin/Announcements.jsx";
 import ManageTimeTable from "./components/admin/(temp)/ManageTimeTable.jsx";
 import LeaveRequest from "./components/admin/(temp)/LeaveRequest.jsx";
 import InventoryManagement from "./components/admin/(temp)/InventoryManagement.jsx";
+import DisciplinaryRecord from "./components/admin/(temp)/DisciplinaryRecord.jsx";
+import FeedbackAndSuggestion from "./components/admin/(temp)/FeedbackAndSuggestion.jsx";
+import ScholorShipManage from "./components/admin/(temp)/ScholorShipManage.jsx";
+import OnlineAdmission from "./components/admin/(temp)/OnlineAdmission.jsx";
 
 // Styled Components
 const AppContainer = styled.div`
@@ -304,6 +308,22 @@ function AppLayout() {
           <Route
             path="/admin/inventory"
             element={<InventoryManagement />}
+          />
+          <Route
+            path="/admin/discipline"
+            element={<DisciplinaryRecord />}
+          />
+          <Route
+            path="/admin/feedback"
+            element={<FeedbackAndSuggestion />}
+          />
+          <Route
+            path="/admin/scholarships"
+            element={<ScholorShipManage />}
+          />
+          <Route
+            path="/admin/online-admissions"
+            element={<OnlineAdmission />}
           />
           
           

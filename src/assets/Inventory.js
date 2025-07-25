@@ -14,7 +14,7 @@ export const dummyInventory = [
     quantity: 15,
     category: "Furniture",
     purchaseDate: "2025-05-22",
-    status: "Approved",
+    status: "Pending",
   },
   {
     id: "ITM003",

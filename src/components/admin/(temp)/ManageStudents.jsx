@@ -30,6 +30,7 @@ const ManageStudents = () => {
   const handleClassChange = (value) => {
     setSelectedClass(value);
   };
+  
   const handleSectionChange = (value) => {
     setSelectedSection(value)
   }
