@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Container, Input, Select, SelectWrapper, UtilityContainer } from "../../styles/Styles";
-import useDebounce from "../../../utils/Debounce";
-import { dummyDisciplinaryrecords } from "../../../assets/DisciplinaryRecords";
+import useDebounce from "../../utils/Debounce";
+import { dummyDisciplinaryrecords } from "../../assets/DisciplinaryRecords";
 
 const Title = styled.h2`
   font-size: 24px;

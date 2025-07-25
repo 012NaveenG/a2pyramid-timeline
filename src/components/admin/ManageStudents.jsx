@@ -8,8 +8,8 @@ import {
 } from "../../styles/Styles.js";
 
 import { useEffect, useState } from "react";
-import useDebounce from "../../../utils/Debounce.jsx";
-import { allStudents } from "../../../assets/Students.js";
+import useDebounce from '../../utils/Debounce.jsx';
+import { allStudents } from "../../assets/Students.js";
 
 
 

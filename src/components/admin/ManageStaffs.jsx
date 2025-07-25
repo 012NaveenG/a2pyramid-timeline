@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Avatar, Button, Card, CloseBtn, Container, GridContainer, Header, InfoSection, Input, ModalWrapper, Overlay, UtilityContainer } from "../../styles/Styles.js"
 import { useEffect, useState } from "react";
 import Pagination from "../../ui/Pagination.jsx";
-import useDebounce from "../../../utils/Debounce.jsx";
+import useDebounce from '../../utils/Debounce.jsx';
 
 
 
@@ -19,7 +19,7 @@ const Subject = styled.p`
   margin: 0;
 `;
 
-import { allStaffs } from "../../../assets/Staffs.js";
+import { allStaffs } from "../../assets/Staffs.js";
 
 const ManageStaffs = () => {
   const [staffs, setStaffs] = useState(allStaffs);

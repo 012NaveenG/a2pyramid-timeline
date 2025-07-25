@@ -17,10 +17,6 @@ import StudentChat from "./components/teacher/StudentChat";
 import LibraryManagement from "./components/LibraryComponent";
 import TransportTracking from "./components/TransportTracking";
 import MyPosts from "./components/MyPosts";
-import AdminClass from "./components/admin/AdminClass";
-import AdminTimeTable from "./components/admin/AdminTimeTable";
-import LibrarymanagementAdmin from "./components/admin/LibrarymanagementAdmin";
-import TransportTrackingAdmin from "./components/admin/TransportTrackingAdmin";
 import FeeStatus from "./components/student/FeeStatus";
 import MyClassStu from "./components/student/MyClassStu";
 import TeacherAttendance from "./components/teacher/TeacherAttendence";
@@ -28,109 +24,37 @@ import AttendanceModule from "./components/teacher/AttendenceTeacher";
 import PostCreate from "./components/PostCreate";
 import PostList from "./components/PostList";
 
-import ManageStaffs from "./components/admin/(temp)/ManageStaffs.jsx";
-import ManageStudents from "./components/admin/(temp)/ManageStudents.jsx";
-import ClassReports from "./components/admin/(temp)/ClassReports.jsx";
-import ManageAttendances from "./components/admin/(temp)/ManageAttendances.jsx";
-import AssignSubjects from "./components/admin/(temp)/AssignSubjects.jsx";
+import ManageStaffs from "./components/admin/ManageStaffs.jsx";
+import ManageStudents from "./components/admin//ManageStudents.jsx";
+import ClassReports from "./components/admin//ClassReports.jsx";
+import ManageAttendances from "./components/admin//ManageAttendances.jsx";
+import AssignSubjects from "./components/admin//AssignSubjects.jsx";
 
-import FeeManagement from "./components/admin/FeeManagement.jsx";
 import HostelManagement from "./components/admin/HostelManagement.jsx";
-import EventCalendar from "./components/admin/EventCalender.jsx";
-import PayrollManagement from "./components/admin/PayrollManagement.jsx";
 import Announcements from "./components/admin/Announcements.jsx";
-import ManageTimeTable from "./components/admin/(temp)/ManageTimeTable.jsx";
-import LeaveRequest from "./components/admin/(temp)/LeaveRequest.jsx";
-import InventoryManagement from "./components/admin/(temp)/InventoryManagement.jsx";
-import DisciplinaryRecord from "./components/admin/(temp)/DisciplinaryRecord.jsx";
-import FeedbackAndSuggestion from "./components/admin/(temp)/FeedbackAndSuggestion.jsx";
-import ScholorShipManage from "./components/admin/(temp)/ScholorShipManage.jsx";
-import OnlineAdmission from "./components/admin/(temp)/OnlineAdmission.jsx";
+import ManageTimeTable from "./components/admin/ManageTimeTable.jsx";
+import LeaveRequest from "./components/admin/LeaveRequest.jsx";
+import InventoryManagement from "./components/admin/InventoryManagement.jsx";
+import DisciplinaryRecord from "./components/admin/DisciplinaryRecord.jsx";
+import FeedbackAndSuggestion from "./components/admin/FeedbackAndSuggestion.jsx";
+import ScholorShipManage from "./components/admin/ScholorShipManage.jsx";
+import OnlineAdmission from "./components/admin/OnlineAdmission.jsx";
 
 // Styled Components
-const AppContainer = styled.div`
-  display: flex;
-  height: 100vh;
-  position: relative;
-`;
+// const AppContainer = styled.div`
+//   display: flex;
+//   height: 100vh;
+//   position: relative;
+// `;
 
-const Sidebar = styled.div`
-  width: 240px;
-  background-image: linear-gradient(to bottom right, #4c8df1, #5cc5ef);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem 1rem;
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  transform: ${({ show }) => (show ? "translateX(0)" : "translateX(-100%)")};
-  transition: transform 0.3s ease;
-  z-index: 1000;
 
-  @media (min-width: 900px) {
-    transform: translateX(0);
-    position: static;
-    height: 100vh;
-  }
-`;
 
-const Content = styled.div`
-  margin-left: 0;
-  flex: 1;
-  padding: 2rem;
-  overflow-y: auto;
-  width: 100%;
-
-  // @media (min-width: 900px) {
-  //   margin-left: 240px;
-  // }
-`;
-
-const SidebarTitle = styled.h2`
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
-`;
-
-const MenuItem = styled.button`
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  margin: 0.6rem 0;
-  cursor: pointer;
-  text-align: left;
-
-  &:hover {
-    font-weight: bold;
-    color: #ffffdd;
-  }
-`;
-
-const Hamburger = styled.button`
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  background: #4c8df1;
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  z-index: 1100;
-
-  @media (min-width: 900px) {
-    display: none;
-  }
-`;
 
 // Main AppLayout
 function AppLayout() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [role, setRole] = useState("");
-  const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
     const sessionUser = getSession();
@@ -147,191 +71,134 @@ function AppLayout() {
     navigate("/");
   };
 
-  const toggleSidebar = () => {
-    setShowSidebar((prev) => !prev);
-  };
-
-  // const renderMenu = () => (
-  //   <>
-  //     <SidebarTitle>SMART</SidebarTitle>
-  //     <MenuItem onClick={() => navigate("/dashboard")}>Dashboard</MenuItem>
-
-  //     {role === "admin" && (
-  //       <>
-  //         <MenuItem onClick={() => navigate("/admin/my-classes")}>Class Managements</MenuItem>
-  //         <MenuItem onClick={() => navigate("/timetable")}>Schedule</MenuItem>
-  //         <MenuItem onClick={() => navigate("/admin/messages")}>Messages</MenuItem>
-  //         <MenuItem onClick={() => navigate("/admin/library")}>Digital Library</MenuItem>
-  //         <MenuItem onClick={() => navigate("/admin/bus-tracking")}>Bus Live Tracking</MenuItem>
-  //         <MenuItem onClick={() => navigate("/my-posts")}>My Posts</MenuItem>
-  //       </>
-  //     )}
-
-  //     {role === "teacher" && (
-  //       <>
-  //         <MenuItem onClick={() => navigate("/my-profile")}>My Profile</MenuItem>
-  //         <MenuItem onClick={() => navigate("/view-post")}>View Posts</MenuItem>
-  //         <MenuItem onClick={() => navigate("/create-post")}>Create Post</MenuItem>
-  //         <MenuItem onClick={() => navigate("/my-classes")}>My Classes</MenuItem>
-  //         <MenuItem onClick={() => navigate("/class-timetable")}>Schedule</MenuItem>
-  //         <MenuItem onClick={() => navigate("/exams-lesson-planner")}>Exams & Lessons</MenuItem>
-  //         <MenuItem onClick={() => navigate("/messages")}>Messages</MenuItem>
-  //         <MenuItem onClick={() => navigate("/library")}>Digital Library</MenuItem>
-  //         <MenuItem onClick={() => navigate("/bus-tracking")}>Bus Live Tracking</MenuItem>
-  //       </>
-  //     )}
-
-  //     {role === "student" && (
-  //       <>
-  //         <MenuItem onClick={() => navigate("/student/my-classes")}>My Class</MenuItem>
-  //         <MenuItem onClick={() => navigate("/messages")}>Messages</MenuItem>
-  //         <MenuItem onClick={() => navigate("/student/fee-status")}>Fee Status</MenuItem>
-  //         <MenuItem onClick={() => navigate("/library")}>Digital Library</MenuItem>
-  //         <MenuItem onClick={() => navigate("/bus-tracking")}>Bus Live Tracking</MenuItem>
-  //       </>
-  //     )}
-
-  //     <MenuItem onClick={handleLogout}>Log out</MenuItem>
-  //   </>
-  // );
 
   return (
-    <AppContainer>
-      {/* <Hamburger onClick={toggleSidebar}>☰</Hamburger> */}
+    <Routes>
+      <Route
+        path="/dashboard"
+        element={<Dashboard />}
+      />
+      <Route
+        path="/create-post"
+        element={<PostCreate onLogout={handleLogout} />}
+      />
+      <Route
+        path="/view-post"
+        element={<PostList currentUser={user} />}
+      />
+      <Route
+        path="/my-classes"
+        element={<MyClass user={user} onLogout={handleLogout} />}
+      />
+      <Route
+        path="/student/my-classes"
+        element={<MyClassStu user={user} onLogout={handleLogout} />}
+      />
+      <Route
+        path="/teacherattendence"
+        element={<AttendanceModule user={user} onLogout={handleLogout} />}
+      />
+      <Route
+        path="/student/fee-status"
+        element={<FeeStatus user={user} onLogout={handleLogout} />}
+      />
+      <Route
+        path="/studentleaves"
+        element={<TeacherAttendance user={user} onLogout={handleLogout} />}
+      />
 
-      {/* <Sidebar show={showSidebar}>
-        {renderMenu()}
-      </Sidebar> */}
 
-      <Content onClick={() => setShowSidebar(false)}>
-        <Routes>
-          <Route
-            path="/dashboard"
-            element={<Dashboard />}
-          />
-          <Route
-            path="/create-post"
-            element={<PostCreate onLogout={handleLogout} />}
-          />
-          <Route
-            path="/view-post"
-            element={<PostList currentUser={user}  />}
-          />
-          <Route
-            path="/my-classes"
-            element={<MyClass user={user} onLogout={handleLogout} />}
-          />
-          <Route
-            path="/student/my-classes"
-            element={<MyClassStu user={user} onLogout={handleLogout} />}
-          />
-          <Route
-            path="/teacherattendence"
-            element={<AttendanceModule user={user} onLogout={handleLogout} />}
-          />
-          <Route
-            path="/student/fee-status"
-            element={<FeeStatus user={user} onLogout={handleLogout} />}
-          />
-          <Route
-            path="/studentleaves"
-            element={<TeacherAttendance user={user} onLogout={handleLogout} />}
-          />
-         
+      <Route
+        path="/class-timetable"
+        element={<ClassTimetable onLogout={handleLogout} />}
+      />
 
-          <Route
-            path="/class-timetable"
-            element={<ClassTimetable onLogout={handleLogout} />}
-          />
-        
-          <Route
-            path="/exams-lesson-planner"
-            element={<ExamsLesson onLogout={handleLogout} /> }
-          />
-          <Route
-            path="/messages"
-            element={<StudentChat onLogout={handleLogout} />}
-          />
-          <Route
-            path="/library"
-            element={<LibraryManagement onLogout={handleLogout} />}
-          />
-          
-          <Route
-            path="/bus-tracking"
-            element={<TransportTracking user={user} onLogout={handleLogout} />}
-          />
+      <Route
+        path="/exams-lesson-planner"
+        element={<ExamsLesson onLogout={handleLogout} />}
+      />
+      <Route
+        path="/messages"
+        element={<StudentChat onLogout={handleLogout} />}
+      />
+      <Route
+        path="/library"
+        element={<LibraryManagement onLogout={handleLogout} />}
+      />
 
-          <Route
-            path="/my-profile"
-            element={<MyPosts user={user} onLogout={handleLogout} />}
-          />
+      <Route
+        path="/bus-tracking"
+        element={<TransportTracking user={user} onLogout={handleLogout} />}
+      />
+
+      <Route
+        path="/my-profile"
+        element={<MyPosts user={user} onLogout={handleLogout} />}
+      />
 
           //admin Routes
-           <Route
-            path="/admin/staffs"
-            element={<ManageStaffs/>}
-          />
-          <Route
-            path="/admin/students"
-            element={<ManageStudents/>}
-          />
-          <Route
-            path="/admin/reports"
-            element={<ClassReports />}
-          />
-          <Route
-            path="/admin/attendance"
-            element={<ManageAttendances />}
-          />
-          <Route
-            path="/admin/announcement"
-            element={<Announcements />}
-          />
-          <Route
-            path="/admin/assign-subjects"
-            element={<AssignSubjects />}
-          />
-         
-          <Route
-            path="/admin/timetable"
-            element={<ManageTimeTable />}
-          />
-          <Route
-            path="/admin/hostel"
-            element={<HostelManagement />}
-          />
-          <Route
-            path="/admin/leave-requests"
-            element={<LeaveRequest />}
-          />
-          <Route
-            path="/admin/inventory"
-            element={<InventoryManagement />}
-          />
-          <Route
-            path="/admin/discipline"
-            element={<DisciplinaryRecord />}
-          />
-          <Route
-            path="/admin/feedback"
-            element={<FeedbackAndSuggestion />}
-          />
-          <Route
-            path="/admin/scholarships"
-            element={<ScholorShipManage />}
-          />
-          <Route
-            path="/admin/online-admissions"
-            element={<OnlineAdmission />}
-          />
-          
-          
+      <Route
+        path="/admin/staffs"
+        element={<ManageStaffs />}
+      />
+      <Route
+        path="/admin/students"
+        element={<ManageStudents />}
+      />
+      <Route
+        path="/admin/reports"
+        element={<ClassReports />}
+      />
+      <Route
+        path="/admin/attendance"
+        element={<ManageAttendances />}
+      />
+      <Route
+        path="/admin/announcement"
+        element={<Announcements />}
+      />
+      <Route
+        path="/admin/assign-subjects"
+        element={<AssignSubjects />}
+      />
 
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </Content>
-    </AppContainer>
+      <Route
+        path="/admin/timetable"
+        element={<ManageTimeTable />}
+      />
+      <Route
+        path="/admin/hostel"
+        element={<HostelManagement />}
+      />
+      <Route
+        path="/admin/leave-requests"
+        element={<LeaveRequest />}
+      />
+      <Route
+        path="/admin/inventory"
+        element={<InventoryManagement />}
+      />
+      <Route
+        path="/admin/discipline"
+        element={<DisciplinaryRecord />}
+      />
+      <Route
+        path="/admin/feedback"
+        element={<FeedbackAndSuggestion />}
+      />
+      <Route
+        path="/admin/scholarships"
+        element={<ScholorShipManage />}
+      />
+      <Route
+        path="/admin/online-admissions"
+        element={<OnlineAdmission />}
+      />
+
+
+
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
   );
 }
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Container } from "../../styles/Styles";
-import { dummyInventory } from "../../../assets/Inventory.js";
+import { dummyInventory } from "../../assets/Inventory.js";
 
 const Title = styled.h2`
   font-size: 24px;

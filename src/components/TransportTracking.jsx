@@ -1,7 +1,7 @@
 
 import styled from "styled-components";
-import { Container } from "./styles/Styles";
-import { getSession } from "../api/auth";
+import { Container } from "../styles/Styles.js";
+import { getSession } from "../api/auth.js";
 
 
 

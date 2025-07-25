@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import styled from "styled-components";
-import { Container } from "../styles/Styles";
-import { dummyHostelComplaints } from "../../assets/HostelComplaints";
+import { Container } from "../../styles/Styles.js";
+import { dummyHostelComplaints } from "../../assets/HostelComplaints.js";
 const Wrapper = styled.div`
   padding: 1.5rem;
   max-width: 100%;

@@ -1,7 +1,7 @@
 import { Container } from "../../styles/Styles.js"
 import { useState } from "react";
 import styled from "styled-components";
-import { dummyLeaveRequests } from "../../../assets/LeaveRequests.js";
+import { dummyLeaveRequests } from "../../assets/LeaveRequests.js";
 
 
 

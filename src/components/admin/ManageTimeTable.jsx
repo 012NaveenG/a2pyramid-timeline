@@ -3,8 +3,8 @@ import { Button, Container, TabButton, TabWrapper } from "../../styles/Styles";
 import styled from "styled-components";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import { dummyTimeTables } from "../../../assets/ClassTimeTable.js";
-import { teacherTimeTables } from "../../../assets/TeacherTimeTable.js";
+import { dummyTimeTables } from "../../assets/ClassTimeTable.js";
+import { teacherTimeTables } from "../../assets/TeacherTimeTable.js";
 
 const Wrapper = styled.div`
   padding: 2rem;

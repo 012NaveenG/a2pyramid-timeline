@@ -15,13 +15,13 @@ import {
   ChartContainer,
   ChartBox
 } from '../../styles/Styles';
-import useDebounce from '../../../utils/Debounce';
+import useDebounce from '../../utils/Debounce.jsx';
 import { useEffect } from 'react';
-import ClassReprtPieChart from '../../../utils/ClassReprtPieChart';
-import ClassReportSubject from '../../../utils/ClassReportSubject';
-import ClassReportAverageNeddleChart from '../../../utils/ClassReportAverageNeddleChart';
+import ClassReprtPieChart from '../../utils/ClassReprtPieChart.jsx';
+import ClassReportSubject from '../../utils/ClassReportSubject.jsx';
+import ClassReportAverageNeddleChart from '../../utils/ClassReportAverageNeddleChart.jsx';
 import styled from 'styled-components';
-import { StudentReports } from '../../../assets/Reports.js';
+import { StudentReports } from '../../assets/Reports.js';
 
 const ClassReports = () => {
   const [input, setInput] = useState('');

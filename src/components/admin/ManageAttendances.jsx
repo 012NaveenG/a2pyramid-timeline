@@ -2,9 +2,9 @@
 import styled from 'styled-components';
 import { Avatar, Button, Container, Input, TabButton, Table, TabWrapper, Tbody, Td, Th, Thead, Tr, UtilityContainer } from '../../styles/Styles'
 import { useEffect, useState } from 'react';
-import { allStaffs } from '../../../assets/Staffs';
-import useDebounce from '../../../utils/Debounce';
-import { allStudents } from '../../../assets/Students';
+import { allStaffs } from '../../assets/Staffs.js';
+import useDebounce from '../../utils/Debounce.jsx';
+import { allStudents } from '../../assets/Students.js';
 const AttendanceBox = styled.div`
   background-color: #f5f5f5;
   padding: 1.5rem;

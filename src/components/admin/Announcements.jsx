@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Container } from "../styles/Styles";
+import { Container } from "../../styles/Styles.js";
 
 const AnnouncementContainer = styled.div`
   display: flex;

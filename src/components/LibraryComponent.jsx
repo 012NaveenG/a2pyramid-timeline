@@ -12,7 +12,7 @@ import {
   Td,
   UtilityContainer,
   Button,
-} from './styles/Styles';
+} from '../styles/Styles.js';
 import useDebounce from '../utils/Debounce.jsx';
 import { dummyLibraryBooks } from '../assets/LibraryBooks.js';
 import { MdDelete } from "react-icons/md";
