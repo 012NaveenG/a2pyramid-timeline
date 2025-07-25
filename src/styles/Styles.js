@@ -21,7 +21,6 @@ const UtilityContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
   flex-wrap: wrap;
   gap: 10px;
 
@@ -40,6 +39,7 @@ const Button = styled.button`
   cursor: pointer;
   font-weight: bold;
   margin-right: 10px;
+
   margin-bottom: 10px;
   transition: all 0.2s ease-in-out;
 
@@ -49,7 +49,6 @@ const Button = styled.button`
 
   @media (max-width: 640px) {
     width: 100%;
-    max-width: 300px;
     margin-right: 0;
   }
 `;

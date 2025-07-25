@@ -6,7 +6,6 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import { getSession, clearSession } from "./api/users";
@@ -39,13 +38,6 @@ import DisciplinaryRecord from "./components/admin/DisciplinaryRecord.jsx";
 import FeedbackAndSuggestion from "./components/admin/FeedbackAndSuggestion.jsx";
 import ScholorShipManage from "./components/admin/ScholorShipManage.jsx";
 import OnlineAdmission from "./components/admin/OnlineAdmission.jsx";
-
-// Styled Components
-// const AppContainer = styled.div`
-//   display: flex;
-//   height: 100vh;
-//   position: relative;
-// `;
 
 
 
