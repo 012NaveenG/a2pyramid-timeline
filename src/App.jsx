@@ -40,6 +40,8 @@ import EventCalendar from "./components/admin/EventCalender.jsx";
 import PayrollManagement from "./components/admin/PayrollManagement.jsx";
 import Announcements from "./components/admin/Announcements.jsx";
 import ManageTimeTable from "./components/admin/(temp)/ManageTimeTable.jsx";
+import LeaveRequest from "./components/admin/(temp)/LeaveRequest.jsx";
+import InventoryManagement from "./components/admin/(temp)/InventoryManagement.jsx";
 
 // Styled Components
 const AppContainer = styled.div`
@@ -296,9 +298,14 @@ function AppLayout() {
             element={<HostelManagement />}
           />
           <Route
-            path="/admin/Payroll"
-            element={<PayrollManagement />}
+            path="/admin/leave-requests"
+            element={<LeaveRequest />}
           />
+          <Route
+            path="/admin/inventory"
+            element={<InventoryManagement />}
+          />
+          
           
 
           <Route path="*" element={<Navigate to="/" />} />

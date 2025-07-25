@@ -100,21 +100,6 @@ const ManageStudents = () => {
         </div>
       </UtilityContainer>
 
-      {/* <GridContainer>
-        {visibleStudents.map((st, idx) => (
-          <Card key={idx} onClick={() => setSelectedStudent(st)}>
-            <Avatar src={st.img} alt={st.name} />
-            <Name>{st.name}</Name>
-            <Subject>Class {st.class || "N/A"}- {st.section}</Subject>
-          </Card>
-        ))}
-      </GridContainer>
-
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      /> */}
 
       <Table>
         <Thead>

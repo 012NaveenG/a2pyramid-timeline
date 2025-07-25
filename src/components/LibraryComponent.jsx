@@ -1,145 +1,160 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import { useState } from 'react';
+import {
+  Container,
+  Input,
+  Select,
+  SelectWrapper,
+  Table,
+  Tbody,
+  Th,
+  Thead,
+  Tr,
+  Td,
+  UtilityContainer,
+  Button,
+} from './styles/Styles';
+import useDebounce from '../utils/Debounce.jsx';
+import { dummyLibraryBooks } from '../assets/LibraryBooks.js';
+import { MdDelete } from "react-icons/md";
+const subjects = ["Mathematics", "Science", "English", "Hindi", "History", "Geography", "Civics", "Econnomy", "Computer", "Sanskrit"];
 
-const Container = styled.div`
-  padding: 2rem;
-  max-width: 800px;
-  margin: 2rem auto;
-  background: #f9fbfc;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-`;
+const LibraryComponent = () => {
+  const [books, setBooks] = useState(dummyLibraryBooks);
+  const [input, setInput] = useState('');
+  const [selectedSubject, setSelectedSubject] = useState('');
+  const [selectedClass, setSelectedClass] = useState('');
+  const debouncedInput = useDebounce(input, 300);
 
-const Section = styled.div`
-  margin-top: 2rem;
-`;
+  const searchBook = (e) => {
+    setInput(e.target.value);
+  };
 
-const Title = styled.h3`
-  margin-bottom: 1rem;
-  color: #333;
-`;
+  const handleClassChange = (value) => {
+    setSelectedClass(value);
+  };
 
-const BookList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-`;
+  const handleSubjectChange = (value) => {
+    setSelectedSubject(value);
+  };
 
-const BookItem = styled.li`
-  margin: 0.75rem 0;
-  background: #e3f2fd;
-  padding: 1rem;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-`;
-
-const BookDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Button = styled.button`
-  background: #1976d2;
-  color: white;
-  border: none;
-  padding: 0.4rem 0.9rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background 0.3s;
-
-  &:hover {
-    background: #125ea4;
-  }
-
-  &:disabled {
-    background: #b0bec5;
-    cursor: not-allowed;
-  }
-`;
-
-const Deadline = styled.small`
-  color: #d32f2f;
-  margin-top: 0.3rem;
-`;
-
-const booksDB = [
-  { id: 1, title: "Introduction to Algorithms", author: "Cormen" },
-  { id: 2, title: "To Kill a Mockingbird", author: "Harper Lee" },
-  { id: 3, title: "The Great Gatsby", author: "F. Scott Fitzgerald" },
-  { id: 4, title: "1984", author: "George Orwell" },
-];
-
-export default function LibraryManagement({ user }) {
-  const [issuedBooks, setIssuedBooks] = useState([]);
-
-  const handleIssue = (book) => {
-    if (!issuedBooks.some((b) => b.id === book.id)) {
-      setIssuedBooks([
-        ...issuedBooks,
-        { ...book, issuedDate: new Date(), returnDate: getReturnDate() },
-      ]);
+  const handleDelete = (bookId) => {
+    const confirmed = window.confirm("Are you sure you want to delete this book?");
+    if (confirmed) {
+      setBooks(prev => prev.filter(book => book.bookId !== bookId));
     }
   };
+  const filteredBooks = dummyLibraryBooks.filter((bk) => {
+    const lowerInput = debouncedInput.toLowerCase();
+    const matchesSearch = bk.title.toLowerCase().includes(lowerInput);
+    const matchesAuthor = bk.author.toLowerCase().includes(lowerInput);
+    const matchesClass = selectedClass ? bk.classLevel.toString() === selectedClass : true;
+    const matchesSubject = selectedSubject ? bk.subject.toLowerCase() === selectedSubject.toLowerCase() : true;
 
-  const handleReturn = (bookId) => {
-    setIssuedBooks(issuedBooks.filter((book) => book.id !== bookId));
-  };
+    return (matchesSearch || matchesAuthor) && matchesClass && matchesSubject;
+  });
 
-  const getReturnDate = () => {
-    const date = new Date();
-    date.setDate(date.getDate() + 14);
-    return date;
-  };
-
-  const sortedIssuedBooks = [...issuedBooks].sort(
-    (a, b) => new Date(a.returnDate) - new Date(b.returnDate)
-  );
 
   return (
     <Container>
-      <Title>📚 Library Management</Title>
+      <UtilityContainer>
+        <Input
+          type="text"
+          placeholder="Search by book title"
+          value={input}
+          onChange={searchBook}
+        />
 
-      <Section>
-        <h4>Available Books</h4>
-        <BookList>
-          {booksDB.map((book) => (
-            <BookItem key={book.id}>
-              <span>{book.title} - {book.author}</span>
-              <Button
-                onClick={() => handleIssue(book)}
-                disabled={issuedBooks.some((b) => b.id === book.id)}
-              >
-                {issuedBooks.some((b) => b.id === book.id) ? "Issued" : "Issue"}
-              </Button>
-            </BookItem>
-          ))}
-        </BookList>
-      </Section>
+        <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+          <SelectWrapper>
+            <Select
+              id="class-select"
+              value={selectedClass}
+              onChange={(e) => handleClassChange(e.target.value)}
+            >
+              <option value="">All Classes</option>
+              {[...Array(12)].map((_, i) => (
+                <option key={i + 1} value={i + 1}>
+                  Class {i + 1}
+                </option>
+              ))}
+            </Select>
+          </SelectWrapper>
 
-      <Section>
-        <h4>My Issued Books</h4>
-        {issuedBooks.length === 0 ? (
-          <p>No books issued yet.</p>
-        ) : (
-          <BookList>
-            {sortedIssuedBooks.map((book) => (
-              <BookItem key={book.id}>
-                <BookDetails>
-                  <strong>{book.title}</strong> - {book.author}
-                  <Deadline>
-                    Return by: {new Date(book.returnDate).toLocaleDateString()}
-                  </Deadline>
-                </BookDetails>
-                <Button onClick={() => handleReturn(book.id)}>Return</Button>
-              </BookItem>
-            ))}
-          </BookList>
-        )}
-      </Section>
+          <SelectWrapper>
+            <Select
+              id="subject-select"
+              value={selectedSubject}
+              onChange={(e) => handleSubjectChange(e.target.value)}
+            >
+              <option value="">All Subjects</option>
+              {subjects.map((sub, idx) => (
+                <option key={idx} value={sub}>{sub}</option>
+              ))}
+            </Select>
+          </SelectWrapper>
+        </div>
+      </UtilityContainer>
+
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Book ID</Th>
+            <Th>Title</Th>
+            <Th>Author</Th>
+            <Th>Subject</Th>
+            <Th>Class</Th>
+            <Th>Year</Th>
+            <Th>Language</Th>
+            <Th colSpan={2}>Actions</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {filteredBooks.length > 0 ? (
+            filteredBooks.map((bk, idx) => (
+              <Tr key={idx}>
+                <Td>{bk.bookId}</Td>
+                <Td>{bk.title}</Td>
+                <Td>{bk.author}</Td>
+                <Td>{bk.subject}</Td>
+                <Td>{bk.classLevel}</Td>
+                <Td>{bk.publicationYear}</Td>
+                <Td>{bk.language}</Td>
+
+                <Td>
+                  <MdDelete
+                    style={{
+                      color: "#d32f2f",
+                      fontSize: "24px",
+                      cursor: "pointer",
+                      transition: "transform 0.2s ease, color 0.2s ease",
+                      padding: "4px",
+                      borderRadius: "6px",
+                    }}
+                    onMouseOver={(e) => {
+                      e.target.style.backgroundColor = "#ffe6e6";
+                      e.target.style.transform = "scale(1.1)";
+                    }}
+                    onMouseOut={(e) => {
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.transform = "scale(1)";
+                    }}
+                    onClick={() => handleDelete(bk.bookId)}
+                  />
+
+                </Td>
+              </Tr>
+            ))
+          ) : (
+            <Tr>
+              <Td colSpan="9" style={{ textAlign: "center", padding: "1rem" }}>
+                No books found
+              </Td>
+            </Tr>
+          )}
+        </Tbody>
+      </Table>
     </Container>
   );
-}
+};
+
+export default LibraryComponent;

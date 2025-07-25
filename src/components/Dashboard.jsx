@@ -235,12 +235,11 @@ export default function Dashboard() {
     { title: "Hostel/Dorm", icon: "https://cdn-icons-png.flaticon.com/512/2731/2731225.png", click: "/admin/hostel" },
     { title: "Bus Tracking", icon: "https://cdn-icons-png.flaticon.com/512/854/854878.png", click: "/bus-tracking" },
     { title: "Library", icon: "https://cdn-icons-png.flaticon.com/512/2702/2702130.png", click: "/library" },
-    { title: "Leave Requests", icon: "https://cdn-icons-png.flaticon.com/512/2920/2920244.png", click: "/admin/leaves" },
+    { title: "Leave Requests", icon: "https://cdn-icons-png.flaticon.com/512/2920/2920244.png", click: "/admin/leave-requests" },
     { title: "Inventory Management", icon: "https://cdn-icons-png.flaticon.com/512/1170/1170627.png", click: "/admin/inventory" },
     { title: "Disciplinary Records", icon: "https://cdn-icons-png.flaticon.com/512/3062/3062634.png", click: "/admin/discipline" },
     { title: "Feedback & Suggestions", icon: "https://cdn-icons-png.flaticon.com/512/3143/3143684.png", click: "/admin/feedback" },
     { title: "Scholarship Manager", icon: "https://cdn-icons-png.flaticon.com/512/1037/1037072.png", click: "/admin/scholarships" },
-    { title: "Role & Permissions", icon: "https://cdn-icons-png.flaticon.com/512/3064/3064197.png", click: "/admin/roles" },
     { title: "Online Admission", icon: "https://cdn-icons-png.flaticon.com/512/3594/3594419.png", click: "/admin/admissions" },
   ];
 
